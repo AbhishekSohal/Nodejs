@@ -1,0 +1,30 @@
+designing rest api 
+which supports json
+
+tasks:
+get/users-list all users
+get/users/1-get the user with id 1
+get/users/2-get the user with id 2
+
+post/users-create new user
+
+patch/users/1-edit the user with id 1
+
+delete/users/1- delete the user with id 1
+
+now one important thing to notice that we want to make our server hybrid
+i.e even mobile users can acess it so if it is get/api/users so that we can response with json data or if it is web browser we can give html 
+
+get/api/users-list all users
+get/api/users/1-get the user with id 1
+get/api/users/2-get the user with id 2
+
+as we cannot write code for each user so we will use dynamic path parameters
+GET /api/users/:id
+:id = variable it can be anythin
+
+post/api/users-create new user
+
+patch/api/users/1-edit the user with id 1
+
+delete/api/users/1- delete the user with id 1
