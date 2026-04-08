@@ -1,0 +1,15 @@
+{
+  "name": "middlewares",
+  "version": "1.0.0",
+  "description": "Express Middleware\r Introduction\r Express.js is a popular web application framework for Node.js, known for its simplicity and flexibility. One of the key features that make Express powerful is middleware. Middleware functions are the building blocks of Express applications, enabling developers to add custom functionality to the request-response cycle. This document aims to provide a comprehensive overview of Express middleware, its purpose, implementation, and best practices.",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
