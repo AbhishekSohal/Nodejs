@@ -36,3 +36,4 @@ console.log(fs.statSync("./text.txt"));
 
 // create a folder =>
 fs.mkdirSync("./text");
+

@@ -42,14 +42,33 @@ app.post('/api/users',(req,res)=>{
 
 })
 
-app.patch('/api/users/:id',(req,res)=>{
+app.patch('/api/users',(req,res)=>{
     // edit the user with id
-    return res.json({status:"pending"});
+    const body=req.body;// it will give us the data which we want to update
+    const id=Number(req.params.id)
+    const user=users.find((user)=>user.id==id)
+    if (!user) {
+        return res.json({status:"user not found"})
+    }
+    users[users.indexOf(user)]={...user,...body};// it will update the user with the new data//... means spread operator it will take all the properties of the user and then we will overwrite the properties which we want to update with the new data
+    fs.writeFile(path.join(__dirname,'mock_data.json'),JSON.stringify(users),(err,data)=>{
+        return res.json({status:"success",id:id})
+    })
+
 
 })
 app.delete('/api/users/:id',(req,res)=>{
     // delete the user with id
-    return res.json({status:"pending"});
+    const id=Number(req.params.id)
+    const user=users.find((user)=>user.id==id)
+    if (!user) {
+        return res.json({status:"user not found"})
+    }
+    users.splice(users.indexOf(user),1);// it will remove the user from the array
+    fs.writeFile(path.join(__dirname,'mock_data.json'),JSON.stringify(users),(err,data)=>{
+        return res.json({status:"success",id:id})
+    })
+
 
 })
 
