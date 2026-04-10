@@ -35,7 +35,7 @@ app.get('/users',(req,res)=>{
 
 });
 //Routes
-app.get('/api/users',(req,res)=>{
+app.get('/api/users',(req,res)=>{//headers are the meta data which is sent along with the request and response
     res.setHeader("X-myname","abhishek")// we can also set the headers in the response
     // Always add X before the custom header name to avoid conflicts with standard headers
     console.log(req.headers);// we can also access the headers which are coming in the request
