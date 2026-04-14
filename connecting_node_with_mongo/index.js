@@ -33,7 +33,7 @@ const userSchema=new mongoose.Schema({
 },{timestamps:true}// it will add createdAt and updatedAt fields to the document
 )
 
-const User=mongoose.model('user',userSchema)
+const User=mongoose.model('user',userSchema)// it will create a collection named users in the database and it will use the userSchema to create the documents in the collection it takes two arguments first is the name of the collection and second is the schema which we want to use to create the documents in the collection
 
 
 
@@ -44,7 +44,7 @@ const User=mongoose.model('user',userSchema)
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())// it will parse the data which is coming in the request body and put it in the req.body
 
-const { type } = require('os');
+const { type } = require('os');// it is a built-in module in nodejs which provides operating system-related utility methods and properties. The type method returns a string identifying the operating system platform on which the Node.js process is running.
 
 app.use((req,res,next)=>{
     console.log("middleware1 called");

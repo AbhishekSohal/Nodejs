@@ -3,7 +3,7 @@ const users = require('./mock_data.json');
 const app=express()
 const port=8002
 const fs=require('fs')
-const path=require('path')
+const path=require('path')// it is a built-in module in nodejs which provides utilities for working with file and directory paths
 // middleware what it will do that whenver data will come it will put in the body
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())// it will parse the data which is coming in the request body and put it in the req.body
@@ -57,7 +57,7 @@ app.post('/api/users',(req,res)=>{
     if (!body.first_name || !body.last_name||!body.email||!body.gender||!body.job_title) {
         return res.status(400).json({status:"failed",msg:"All fields are required"})
     }
-    users.push({...body,id:users.length+1})
+    users.push({...body,id:users.length+1})// it will add the new user to the array and we are also adding the id to the user which is the length of the array +1 eg if we have 10 users in the array then the id of the new user will be 11
     fs.writeFile(path.join(__dirname,'mock_data.json'),JSON.stringify(users),(err,data)=>{
         return res.status(201).json({status:"success",id:users.length})
     })
