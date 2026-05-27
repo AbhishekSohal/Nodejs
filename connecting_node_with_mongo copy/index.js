@@ -68,7 +68,7 @@ app.get('/users',async(req,res)=>{
    const allDBusers=await User.find({})// it will return all the users from the database
    const html=`
    <ul>
-      ${allDBusers.map((user)=>`<li>${user.first_name}-${user.email}</li>`).join("")}
+      ${allDBusers.map((user)=>`<li>${user.first_name}-${user.email}</li>`).join("")} // it will return a string which is the concatenation of all the list items which we have created for each user in the database '-' is used to separate the first name and email of the user without it it will be difficult to read the data of the user and join("") is used to join all the list items into a single string without any separator
    </ul>`;
    res.send(html)
 
@@ -103,7 +103,7 @@ app.post('/api/users',async(req,res)=>{// we are using async because we are usin
 app.patch('/api/users/:id',async(req,res)=>{
     // edit the user with id
     try{
-        const user= await User.findByIdAndUpdate(req.params.id,req.body,{new:true})// it will update the user with the given id in the database and return the updated user req.query is the data which we want to update and {new:true} means it will return the updated user
+        const user= await User.findByIdAndUpdate(req.params.id,req.body,{new:true})// it will update the user with the given id in the database and return the updated user req.query is the data which we want to update and {new:true} means it will return the updated user in this line we are using findByIdAndUpdate method of mongoose which takes three arguments first is the id of the user which we want to update second is the data which we want to update and third is an options object which we can use to specify some options for the update operation in this case we are using {new:true} which means it will return the updated user after the update operation is performed if we dont use this option it will return the user before the update operation is performed
          if (!user) {
         return res.json({status:"user not found"})
     }
