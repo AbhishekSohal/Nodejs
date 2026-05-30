@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>URL SHORTNER</h1>
-    <% if (locals.id) { %>
+    <% if (locals.id) { %>//locals.id is used to access the id variable passed from the server(bakend se jo data aata hai usko access karne ke liye locals.id use karte hai)
         <p>URL Generated: http://localhost:8003/url/<%= id %></p>
      
     <% } %>
