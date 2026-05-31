@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "nanoid": "^5.1.9"
+    "jsonwebtoken": "^9.0.3"
   }
 }
