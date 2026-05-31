@@ -1,0 +1,4 @@
+basically what we have learn is that for/in  web browsers cookies are sent automatically to server 
+and they are stored in browser memory . and for each domain they are thier own cookies
+
+and for mobile apps we use headers authorization which we have to do manually and are stored in local storage
