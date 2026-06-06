@@ -7,3 +7,4 @@ postman/collections/New Collection/http-localhost-8002-api-users.request.yaml
 postman/collections/New Collection/.resources/definition.yaml
 hello.js
 package.json
+**/.env
