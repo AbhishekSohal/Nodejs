@@ -25,4 +25,25 @@ async function UserLogin(req, res) {
     res.redirect('/');//it will redirect to the home page
 }
 
-module.exports = { UserSignup, UserLogin };
+async function getOrCreateUser(discordUser) {
+    try {
+        let user = await User.findOne({ discordId: discordUser.id });
+
+        if (!user) {
+            user = await User.create({
+                name: discordUser.username,
+                email: `${discordUser.id}@discord.user`,
+                password: 'discord-bot-user',
+                discordId: discordUser.id,
+                role: 'Normal'
+            });
+        }
+
+        return user;
+    } catch (error) {
+        console.error('Error with user:', error);
+        return null;
+    }
+}
+
+module.exports = { UserSignup, UserLogin, getOrCreateUser };

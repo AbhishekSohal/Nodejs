@@ -12,7 +12,7 @@ const urlSchema = new mongoose.Schema({
     visitHistory: [{ timestamp: { type: Number } }],
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'//it is a reference to the users collection
+        ref: 'users'
     }
 
 
