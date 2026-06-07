@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploads</title>
+    <style>
+        /*  * means all elements */
+  *{ 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* This ensures that padding and borders are included in the total width and height of elements */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eeeeee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            width: 400px;
+        }
+
+        #upload-container { /* this is the container for the file upload area */
+            border: 2px dashed #f1f1f1;
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #upload-container:hover {
+            border-color: #0091ff;
+            background-color: #f0faff;
+        }
+
+        #upload-container input[type="file"] {
+            display: none;
+        }
+
+        #upload-container p {
+            color: #888888;
+            margin-bottom: 10px;
+        }
+
+        #upload-container span {
+            color: #0091ff;
+            font-weight: bold;
+        }
+
+        button {
+            background: #0091ff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0078d4;
+        } 
+    </style>
+</head>
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <div id="upload-container">
+            <p>Click to select a file or drag and drop it here
+            <span>Supported formats: JPG, PNG, GIF</span></p>
+            <input type="file" id="image" name="profileImage"/>
+        </div>
+        <br>
+        <button type="submit">Upload</button>
+    </form>
+    <script>
+    const fileInput = document.getElementById('image') /* this is the file input element that allows users to select a file from their device */
+    const uploadContainer = document.getElementById('upload-container')
+
+    uploadContainer.addEventListener('click', function () { /* this event listener listens for click events on the upload container, which allows users to click anywhere within the container to trigger the file selection dialog */
+        fileInput.click()/* when the upload container is clicked, it programmatically triggers a click event on the hidden file input element, opening the file selection dialog for the user to choose a file */
+    })
+
+    fileInput.addEventListener('change', function() { /* this event listener listens for changes to the file input element, which occurs when a user selects a file */
+        if (fileInput.files.length > 0) { /* this checks if any files have been selected by the user */
+            uploadContainer.style.borderColor = '#0091ff' /* if a file is selected, it changes the border color of the upload container to indicate that a file has been chosen */
+        } else {
+            uploadContainer.style.borderColor = '#f1f1f1' /* if no file is selected, it resets the border color to its original state */
+        }
+    })
+    </script>  
+</body>
+</html>
