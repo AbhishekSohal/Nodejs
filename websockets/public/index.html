@@ -22,13 +22,20 @@
         sendBtn.addEventListener('click', () => {
             const messageValue = message.value
             socket.emit('message', messageValue)// it will send the message to the server
-            message.value = ''
+            message.value = ''// after sending the message we clear the input field
         })
         socket.on('message', (msg) => {     // It will receive the message from the server
             const p = document.createElement('p')
             p.innerText = msg
             messages.appendChild(p)
         })
+
+
+        const adminSocket = io('/admin');
+
+        adminSocket.on('message', (msg) => {
+            console.log('Received admin announcement:', msg);
+        });
 
     </script>
 </body>

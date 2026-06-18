@@ -20,6 +20,22 @@ io.on('connection', (socket) => {
 })
 
 
+//namespaces
+// they are just like channels in a television
+// with the help of namespaces we can create different different channels
+// for different different features
+
+const adminNamespace = io.of('/admin')
+adminNamespace.on('connection', (socket) => {
+    console.log("Admin connected")
+    socket.on('message', (msg) => {
+        adminNamespace.emit('message', msg) // it will send the message to all the users who are connected to the server
+    })
+})
+
+
+
+
 
 
 
