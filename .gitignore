@@ -8,3 +8,4 @@ postman/collections/New Collection/.resources/definition.yaml
 hello.js
 package.json
 **/.env
+package-lock.json
