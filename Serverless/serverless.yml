@@ -1,0 +1,16 @@
+service: demo-api
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs24.x
+  architecture: arm64
+  region: ap-south-1
+
+functions:
+  hello:
+    handler: Hello.handler
+    events:
+      - httpApi:
+          path: /hello
+          method: get
