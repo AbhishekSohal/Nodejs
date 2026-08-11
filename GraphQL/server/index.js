@@ -4,6 +4,8 @@ const { expressMiddleware } = require('@as-integrations/express5');
 const cors = require('cors');
 const axios = require('axios');
 
+
+
 const typeDefs = `
   type User {
     id: ID!
@@ -20,7 +22,7 @@ const typeDefs = `
   type Query {
     getTodos: [Todo!]!
     getUsers: [User!]!
-    getUser(id: ID!): User // Fetch a single user by ID
+    getUser(id: ID!): User
   }
 `;
 
