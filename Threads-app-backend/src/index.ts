@@ -1,6 +1,7 @@
 import express = require("express");
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@as-integrations/express5');
+const { prisma } = require('./lib/db');
 
 async function startApolloServer() {
     const app = express();
@@ -13,6 +14,9 @@ const typeDefs = `
     hello: String
     sayHello(name: String!): String
   }
+  type Mutation {
+    createUser(firstName: String!, lastName: String!, email: String!, password: String!): Boolean
+  }
 `;
 
 const resolvers = {
@@ -20,6 +24,21 @@ const resolvers = {
     hello: () => 'Hello, world!',
     sayHello: (_: any, { name }: { name: string }) => `Hello, ${name}!`,
   },
+  Mutation: {
+    createUser: async (_: any, { firstName, lastName, email, password }: { firstName: string; lastName: string; email: string; password: string }) => {
+      await prisma.user.create({
+        data: {
+          firstName,
+          lastName,
+          email,
+          password,
+          salt: "randomsalt", // In a real application, generate a proper salt and hash the password
+        },
+      });
+      return true;
+
+    }
+  }
 };
 
 // Create GraphQL server

@@ -1,15 +1,15 @@
 services:
   postgres:
     container_name: threads-db
-    image: postgres
+    image: postgres:18  # Explicit version
     ports:
-      - "5432:5432"
+      - "15432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=threads
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
 
 volumes:
   postgres_data:
