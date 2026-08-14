@@ -9,3 +9,10 @@ hello.js
 package.json
 **/.env
 package-lock.json
+**/build/
+**/src/generated/
+**/.agents/
+**/.claude/
+**/.windsurf/
+**/.vscode/
+**/skills-lock.json
