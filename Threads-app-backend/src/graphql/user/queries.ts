@@ -1,5 +1,5 @@
 const queries = `
-  hello: String
+  getUserToken(email: String!, password: String!): String
 `;
 
 module.exports = queries;

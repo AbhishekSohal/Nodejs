@@ -1,10 +1,16 @@
+const { UserService } = require('../../services/user');
+
 const queries = {
-  hello: () => 'Hello from Threads backend!'
+  getUserToken: async (_: any, payload: any) => {
+    const token = await UserService.getUserToken(payload);
+    return token;
+  }
 };
 
 const mutations = {
-  createUser: async (_: any, { firstName, lastName, email, password }: any) => {
-    return `User created successfully: ${firstName} ${lastName} (${email})`;
+  createUser: async (_: any, payload: any) => {
+    const res = await UserService.createUser(payload);
+    return res.id;
   }
 };
 
