@@ -50,7 +50,14 @@ class UserService {
     const token = JWT.sign({ userId: user.id }, process.env.JWT_SECRET || 'default_secret');
     return token;
   }
-}
+    public static decodeJWT(token: string) {
+    try {
+      const decoded = JWT.verify(token, JWT_SECRET);
+      return decoded;
+    } catch (error) {
+      throw new Error('Invalid token');
+    }
+}}
   
 
 

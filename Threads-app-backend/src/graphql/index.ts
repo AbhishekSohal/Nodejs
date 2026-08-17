@@ -7,6 +7,7 @@ async function createApolloServer() {
       ${User.typeDefs}
       type Query {
         ${User.queries}
+        
       }
 
       type Mutation {

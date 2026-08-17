@@ -5,8 +5,11 @@ const queries = {
     const token = await UserService.getUserToken(payload);
     return token;
   },
-  getCurrentLoggedInUser: async()=>{
-    throw new Error('Not implemented yet');
+  getCurrentLoggedInUser: async(_:any, __:any, context: any)=>{
+    if (!context.userId) {
+      throw new Error('Not authenticated');
+    }
+    return UserService.getUserById(context.userId);
   }
 };
 
