@@ -4,6 +4,7 @@ const User = require('./user');
 async function createApolloServer() {
   const server = new ApolloServer({
     typeDefs: `
+      ${User.typeDefs}
       type Query {
         ${User.queries}
       }

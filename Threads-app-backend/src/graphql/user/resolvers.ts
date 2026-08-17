@@ -4,6 +4,9 @@ const queries = {
   getUserToken: async (_: any, payload: any) => {
     const token = await UserService.getUserToken(payload);
     return token;
+  },
+  getCurrentLoggedInUser: async()=>{
+    throw new Error('Not implemented yet');
   }
 };
 
